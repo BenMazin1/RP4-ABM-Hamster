@@ -12,7 +12,7 @@ Welcome to the official repository of the RP4 Hamster Agent Based Model (ABM) Gr
 
 ## Project Files
 
-- [Interactive NetLogo Model (Browser Version)](RP4%20Hamster%20Model%20final.html)
+- [Interactive NetLogo Model (Browser Version)]([RP4%20Hamster%20Model%20final.html](https://benmazin1.github.io/RP4-ABM-Hamster/RP4%20Hamster%20Model%20final.html))
 - [NetLogo Model File (Downloadable)](RP4%20Hamster%20Model%20final.nlogo)
 - [Python Analysis Script (Downloadable)](Netlogo%20analysis.py)
 
