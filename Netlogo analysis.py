@@ -8,10 +8,14 @@
 
 import pandas as pd
 from scipy import stats
+import matplotlib.pyplot as plt
 
 # Set the number of trials and initial hamsters
-number_of_trials = 20000
+number_of_trials = 200000
 initial_hamsters = 100
+
+# save path for the results
+save_path = '/Users/benmazin/Movies/'
 
 # Create an empty DataFrame with 4 columns
 all_data = []
@@ -35,7 +39,7 @@ def read_inconsistent_csv(file_path, delimiter=','):
 for i in range(1, number_of_trials + 1):
 
     # Read in the csv file
-    file_path = f'/Users/benmazin/Movies/netlogo output/world{i}.csv'
+    file_path = f'{save_path}netlogo output/world{i}.csv'
     data = read_inconsistent_csv(file_path, delimiter=',')
 
     # Get the value of ChemoWork
@@ -93,6 +97,30 @@ resultSum = pd.DataFrame({
     'Value': [chemo_total_dead_mean, chemo_percent_infect_mean, no_chemo_total_dead_mean, no_chemo_percent_infect_mean, totalDeadTtest, percentInfectTtest]
 })
 
+# Plot an individual distribution for each category and save to a png in the same directory
+save_path = save_path + 'netlogo results/'
+
+results['ChemoTotalDead'].plot.kde()
+plt.xlabel('Chemo Total Dead')
+plt.savefig(save_path + 'ChemoTotalDeadDist.png')
+plt.close()
+
+results['ChemoPercentInfect'].plot.kde()
+plt.xlabel('Chemo Percent Infect')
+plt.savefig(save_path + 'ChemoPercentInfectDist.png')
+plt.close()
+
+results['NoChemoTotalDead'].plot.kde()
+plt.xlabel('No Chemo Total Dead')
+plt.savefig(save_path + 'NoChemoTotalDeadDist.png')
+plt.close()
+
+results['NoChemoPercentInfect'].plot.kde()
+plt.xlabel('No Chemo Percent Infect')
+plt.savefig(save_path + 'NoChemoPercentInfectDist.png')
+plt.close()
+
+
 # save the summary and results to csv
-resultSum.to_csv('/Users/benmazin/Movies/netlogo results/summary.csv', index=False)
-results.to_csv('/Users/benmazin/Movies/netlogo results/results.csv', index=False)  
+resultSum.to_csv(save_path + 'summary.csv', index=False)
+results.to_csv(save_path + 'results.csv', index=False)  
