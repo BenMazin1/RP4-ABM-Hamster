@@ -2,76 +2,91 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>RP4 ABM Hamster</title>
+    <title>RP4 ABM Hamster Project</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
-            background-color: #eaeef3;
-            color: #333;
+            background-color: #f7fafc;
+            color: #424242;
             line-height: 1.6;
         }
 
         .container {
-            max-width: 900px;
-            margin: auto;
-            background: #fff;
-            padding: 20px 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 1000px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
         }
 
-        h1 {
-            color: #2a5077;
-            margin-bottom: 0.5em;
+        h1, h2 {
+            color: #2c3e50;
+            margin-bottom: 16px;
         }
 
         p {
             margin-top: 0;
+            margin-bottom: 24px;
+            font-size: 18px;
+            color: #626262;
         }
 
         a {
-            color: #0074d9;
+            color: #2980b9;
             text-decoration: none;
-            transition: color 0.2s ease-in-out;
+            transition: color 0.3s ease;
         }
 
         a:hover {
-            color: #0056b3;
+            color: #21618c;
             text-decoration: underline;
         }
 
-        .file-list {
+        .file-list, .member-list {
             list-style: none;
             padding-left: 0;
         }
 
-        .file-list li {
-            margin-bottom: 10px;
-            padding: 5px 0;
+        .file-list li, .member-list li {
+            margin-bottom: 12px;
         }
 
-        .file-list li a {
+        .file-list li a, .member-list li {
             display: block;
-            padding: 10px;
-            background: #f0f4f8;
-            border-radius: 5px;
-            transition: background-color 0.2s ease-in-out;
+            padding: 12px 15px;
+            background: #ecf0f1;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
         }
 
         .file-list li a:hover {
-            background-color: #e1e8ee;
+            background-color: #d6eaf8;
+        }
+
+        .member-list li {
+            background-color: #f0f4f7;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to the GitHub Repository for the Hamster Agent Based Model Group</h1>
-        <p>This is a collection of our model and analysis code. Feel free to explore the files listed below:</p>
+        <h1>Hamster Agent Based Model (ABM) Project</h1>
+        <p>Welcome to the official repository of the RP4 Hamster Agent Based Model (ABM) Group. Here you will find our interactive model and analysis code used in this iSci Project. Dive into the links below to explore our work.</p>
         <ul class="file-list">
-            <li><a href="RP4 Hamster Model final.html">NetLogo Online Model (use in browser)</a></li>
-            <li><a href="RP4 Hamster Model final.nlogo">NetLogo Model (download and run)</a></li>
-            <li><a href="Netlogo analysis.py">Analysis Code (download and run)</a></li>
+            <li><a href="RP4 Hamster Model final.html">Interactive NetLogo Model (Browser Version)</a></li>
+            <li><a href="RP4 Hamster Model final.nlogo">NetLogo Model File (Downloadable)</a></li>
+            <li><a href="Netlogo analysis.py">Python Analysis Script (Downloadable)</a></li>
+        </ul>
+        <h2>Group Members</h2>
+        <ul class="member-list">
+            <li>Ben Mazin</li>
+            <li>Kyla Lewis</li>
+            <li>Siya Sood</li>
+            <li>Sarah Winter</li>
+            <li>Jasleen Dhillon</li>
         </ul>
     </div>
 </body>
