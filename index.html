@@ -5,31 +5,39 @@
     <title>RP4 ABM Hamster</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            background-color: #f3f4f6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #eaeef3;
             color: #333;
+            line-height: 1.6;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: auto;
             background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         h1 {
-            color: #0366d6;
+            color: #2a5077;
+            margin-bottom: 0.5em;
+        }
+
+        p {
+            margin-top: 0;
         }
 
         a {
-            color: #0366d6;
+            color: #0074d9;
             text-decoration: none;
+            transition: color 0.2s ease-in-out;
         }
 
         a:hover {
+            color: #0056b3;
             text-decoration: underline;
         }
 
@@ -40,17 +48,30 @@
 
         .file-list li {
             margin-bottom: 10px;
+            padding: 5px 0;
+        }
+
+        .file-list li a {
+            display: block;
+            padding: 10px;
+            background: #f0f4f8;
+            border-radius: 5px;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .file-list li a:hover {
+            background-color: #e1e8ee;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Welcome to the GitHub Repository for the Hamster Agent Based Model Group</h1>
-        <p>This is a collection our model and anlysis code. Feel free to explore the files listed below:</p>
+        <p>This is a collection of our model and analysis code. Feel free to explore the files listed below:</p>
         <ul class="file-list">
             <li><a href="RP4 Hamster Model final.html">NetLogo Online Model (use in browser)</a></li>
             <li><a href="RP4 Hamster Model final.nlogo">NetLogo Model (download and run)</a></li>
-            <li><a href="Netlogo analysis.py">Analysis Code</a></li>
+            <li><a href="Netlogo analysis.py">Analysis Code (download and run)</a></li>
         </ul>
     </div>
 </body>
