@@ -11,11 +11,11 @@ from scipy import stats
 import matplotlib.pyplot as plt
 
 # Set the number of trials and initial hamsters
-number_of_trials = 200000
+number_of_trials = 2000000
 initial_hamsters = 100
 
 # save path for the results
-save_path = '/Users/benmazin/Movies/'
+save_path = '/Users/benmazin/Code Dev/RP 4/'
 
 # Create an empty DataFrame with 4 columns
 all_data = []
@@ -39,7 +39,7 @@ def read_inconsistent_csv(file_path, delimiter=','):
 for i in range(1, number_of_trials + 1):
 
     # Read in the csv file
-    file_path = f'{save_path}netlogo output/world{i}.csv'
+    file_path = f'{save_path}output ABM/world{i}.csv'
     data = read_inconsistent_csv(file_path, delimiter=',')
 
     # Get the value of ChemoWork
@@ -77,6 +77,10 @@ for i in range(1, number_of_trials + 1):
     else:
         print("Error: ChemoWork is not true or false")
         print(i)
+    
+    # Print the progress
+    if i % 1000 == 0:
+        print(f'{i} trials completed')
 
 #save dataframe to csv
 results = pd.DataFrame(all_data)

@@ -108,7 +108,7 @@ to go
     ]
   set mri-status mri-status + 1
   if %infected = 0 [
-    export-plot "Populations" (word "/Users/benmazin/Movies/netlogo output/world" behaviorspace-run-number ".csv")
+    export-plot "Populations" (word "/Users/benmazin/Code Dev/RP 4/output ABM/world" behaviorspace-run-number ".csv")
     stop
     ]
   tick
@@ -661,7 +661,7 @@ NetLogo 6.4.0
 @#$#@#$#@
 @#$#@#$#@
 <experiments>
-  <experiment name="experiment" repetitions="100000" sequentialRunOrder="false" runMetricsEveryStep="false">
+  <experiment name="experiment" repetitions="1000000" sequentialRunOrder="false" runMetricsEveryStep="false">
     <setup>setup</setup>
     <go>go</go>
     <enumeratedValueSet variable="inital_cancer">
