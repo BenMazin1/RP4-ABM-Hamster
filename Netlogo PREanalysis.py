@@ -8,9 +8,6 @@
 
 import pandas as pd
 from scipy import stats
-import matplotlib.pyplot as plt
-import numpy as np
-from scipy.stats import norm
 
 # Set the number of trials and initial hamsters
 number_of_trials = 400000
@@ -37,29 +34,7 @@ def read_inconsistent_csv(file_path, delimiter=','):
     df = pd.DataFrame(data, columns=range(max_columns))  # Set index to match column numbers
     return df
 
-def plothist(data, title, xlabel, ylabel, save_path):
-    
-    data = data[np.isfinite(data)]
-    bins = np.arange(0.5, 101.5, 1)
 
-    count, bins, ignored = plt.hist(data, bins=bins, density=False, alpha=0.5, color='g', edgecolor='black')
-
-    mu, std = norm.fit(data)
-
-    xmin, xmax = plt.xlim()
-    x = np.linspace(xmin, xmax, 100)
-    bin_width = np.diff(bins)[0]
-    p = norm.pdf(x, mu, std) * len(data) * bin_width   
-    plt.plot(x, p, 'k', linewidth=2)
-
-    plt.title(title) 
-    plt.xlim(0, 101)
-    plt.xlabel(xlabel)
-    plt.ylabel(ylabel)
-    plt.savefig(save_path, dpi=300)
-    plt.close()
-
-# Run for number_of_trials
 for i in range(1, number_of_trials + 1):
 
     # Read in the csv file
@@ -127,12 +102,6 @@ resultSum = pd.DataFrame({
 
 # Plot an individual distribution for each category and save to a png in the same directory
 save_path = save_path + 'netlogo results/'
-
-plothist(results['ChemoTotalDead'], 'Total Dead with Doxorubicin Treatment', 'Total Dead', 'Frequency', save_path + 'ChemoTotalDeadHist.png')
-plothist(results['ChemoPercentInfect'], 'Infection with Doxorubicin Treatment', 'Most Infected at One Time', 'Frequency', save_path + 'ChemoMostInfectHist.png')
-plothist(results['NoChemoTotalDead'], 'Total Dead WITHOUT Doxorubicin Treatment', 'Total Dead', 'Frequency', save_path + 'NoChemoTotalDeadHist.png')
-plothist(results['NoChemoPercentInfect'], 'Infection WITHOUT Doxorubicin Treatment', 'Most Infected at One Time', 'Frequency', save_path + 'NoChemoMostInfectHist.png')
-
 
 # save the summary and results to csv
 resultSum.to_csv(save_path + 'summary.csv', index=False)
