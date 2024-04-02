@@ -128,10 +128,10 @@ resultSum = pd.DataFrame({
 # Plot an individual distribution for each category and save to a png in the same directory
 save_path = save_path + 'netlogo results/'
 
-plothist(results['ChemoTotalDead'], 'Chemo Total Dead', 'Total Dead', 'Frequency', save_path + 'ChemoTotalDeadHist.png')
-plothist(results['ChemoPercentInfect'], 'Chemo most Infect', 'Most Infected at Once', 'Frequency', save_path + 'ChemoPercentInfectHist.png')
-plothist(results['NoChemoTotalDead'], 'No Chemo Total Dead', 'Total Dead', 'Frequency', save_path + 'NoChemoTotalDeadHist.png')
-plothist(results['NoChemoPercentInfect'], 'No Chemo Most Infect', 'Most Infected at Once', 'Frequency', save_path + 'NoChemoPercentInfectHist.png')
+plothist(results['ChemoTotalDead'], 'Total Dead with Doxorubicin Treatment', 'Total Dead', 'Frequency', save_path + 'ChemoTotalDeadHist.png')
+plothist(results['ChemoPercentInfect'], 'Infection with Doxorubicin Treatment', 'Most Infected at One Time', 'Frequency', save_path + 'ChemoPercentInfectHist.png')
+plothist(results['NoChemoTotalDead'], 'Total Dead WITHOUT Doxorubicin Treatment', 'Total Dead', 'Frequency', save_path + 'NoChemoTotalDeadHist.png')
+plothist(results['NoChemoPercentInfect'], 'Infection WITHOUT Doxorubicin Treatment', 'Most Infected at One Time', 'Frequency', save_path + 'NoChemoPercentInfectHist.png')
 
 
 # save the summary and results to csv
