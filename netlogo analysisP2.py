@@ -1,10 +1,10 @@
-# RP4 - Agent Based Model Analysis
+# RP4 - Agent Based Model Analysis Part 2
 # Ben Mazin
 # 03/26/2024
 # School of Interdisciplinary Science, McMaster University
 
-# This script reads in the csv files from the Netlogo model and analyzes the data to determine if the chemo treatment is effective
-# It then saves the results to a csv file
+# This script is used to analyze the results of the NetLogo simulation. It reads the results from the csv file and plots the results as histograms. 
+$It also calculates the standard deviation of the results and saves the results to a csv file.
 
 import pandas as pd
 from scipy import stats
@@ -14,30 +14,6 @@ import numpy as np
 
 # save path for the results
 save_path = '/Users/benmazin/Code Dev/RP 4/netlogo results/'
-
-'''
-def plothist(data, title, xlabel, ylabel, save_path):
-    
-    data = data[np.isfinite(data)]
-    bins = np.arange(0.5, 101.5, 1)
-
-    count, bins, ignored = plt.hist(data, bins=bins, density=False, alpha=0.5, color='g', edgecolor='black')
-
-    mu, std = norm.fit(data)
-
-    xmin, xmax = plt.xlim()
-    x = np.linspace(xmin, xmax, 100)
-    bin_width = np.diff(bins)[0]
-    p = norm.pdf(x, mu, std) * len(data) * bin_width   
-    plt.plot(x, p, 'k', linewidth=2)
-
-    plt.title(title) 
-    plt.xlim(0, 101)
-    plt.xlabel(xlabel)
-    plt.ylabel(ylabel)
-    plt.savefig(save_path, dpi=300)
-    plt.close()
-'''
 
 def plothist(data, title, xlabel, ylabel, save_path):
     data = data[np.isfinite(data)]

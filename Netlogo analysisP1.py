@@ -1,4 +1,4 @@
-# RP4 - Agent Based Model Analysis
+# RP4 - Agent Based Model Analysis Part 1
 # Ben Mazin
 # 03/26/2024
 # School of Interdisciplinary Science, McMaster University
