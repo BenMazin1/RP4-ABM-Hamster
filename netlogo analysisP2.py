@@ -17,7 +17,7 @@ save_path = '/Users/benmazin/Code Dev/RP 4/netlogo results/'
 
 def plothist(data, title, xlabel, ylabel, save_path):
     data = data[np.isfinite(data)]
-    bins = np.arange(0.5, 101.5, 1)
+    bins = np.arange(0.5, 101.5, 2)
 
     hist_data, bin_edges = np.histogram(data, bins=bins, density=True)
     plt.hist(bin_edges[:-1], bins=bins, weights=hist_data, alpha=0.5, color='g', edgecolor='black')
