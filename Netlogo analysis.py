@@ -129,9 +129,9 @@ resultSum = pd.DataFrame({
 save_path = save_path + 'netlogo results/'
 
 plothist(results['ChemoTotalDead'], 'Total Dead with Doxorubicin Treatment', 'Total Dead', 'Frequency', save_path + 'ChemoTotalDeadHist.png')
-plothist(results['ChemoPercentInfect'], 'Infection with Doxorubicin Treatment', 'Most Infected at One Time', 'Frequency', save_path + 'ChemoPercentInfectHist.png')
+plothist(results['ChemoPercentInfect'], 'Infection with Doxorubicin Treatment', 'Most Infected at One Time', 'Frequency', save_path + 'ChemoMostInfectHist.png')
 plothist(results['NoChemoTotalDead'], 'Total Dead WITHOUT Doxorubicin Treatment', 'Total Dead', 'Frequency', save_path + 'NoChemoTotalDeadHist.png')
-plothist(results['NoChemoPercentInfect'], 'Infection WITHOUT Doxorubicin Treatment', 'Most Infected at One Time', 'Frequency', save_path + 'NoChemoPercentInfectHist.png')
+plothist(results['NoChemoPercentInfect'], 'Infection WITHOUT Doxorubicin Treatment', 'Most Infected at One Time', 'Frequency', save_path + 'NoChemoMostInfectHist.png')
 
 
 # save the summary and results to csv
