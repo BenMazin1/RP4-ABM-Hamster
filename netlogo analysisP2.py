@@ -10,7 +10,6 @@ import pandas as pd
 from scipy import stats
 import matplotlib.pyplot as plt
 import numpy as np
-from scipy.stats import norm, lognorm, expon
 
 
 # save path for the results
@@ -44,26 +43,30 @@ def plothist(data, title, xlabel, ylabel, save_path):
     data = data[np.isfinite(data)]
     bins = np.arange(0.5, 101.5, 1)
 
-    plt.hist(data, bins=bins, density=True, alpha=0.5, color='g', edgecolor='black')
+    hist_data, bin_edges = np.histogram(data, bins=bins, density=True)
+    plt.hist(bin_edges[:-1], bins=bins, weights=hist_data, alpha=0.5, color='g', edgecolor='black')
 
-    # Fit different distributions and calculate the sum of squared errors (SSE)
-    distributions = [norm, lognorm, expon]
+    bin_centers = (bin_edges[:-1] + bin_edges[1:]) / 2
+
+    # List of distributions to test
+    distributions = [stats.norm, stats.lognorm, stats.expon, stats.beta, stats.gamma, stats.weibull_min]
+
     sse = {}
     for distribution in distributions:
-        params = distribution.fit(data)
-        arg = params[:-2]
-        loc = params[-2]
-        scale = params[-1]
+        try:
+            params = distribution.fit(data)
+            arg = params[:-2]
+            loc = params[-2]
+            scale = params[-1]
 
-        pdf = distribution.pdf(bins, loc=loc, scale=scale, *arg)
-        bin_centers = (bins[:-1] + bins[1:]) / 2
-        sse[distribution.name] = np.sum(np.power(pdf - np.histogram(data, bins=bins, density=True)[0], 2))
+            pdf = distribution.pdf(bin_centers, *arg, loc=loc, scale=scale)
+            sse[distribution.name] = np.sum(np.power(hist_data - pdf, 2))
+        except Exception as e:
+            print(f"Could not fit {distribution.name} due to {e}")
 
-    # Find the best fitting distribution
     best_fit = min(sse, key=sse.get)
     best_params = distributions[distributions.index(getattr(stats, best_fit))].fit(data)
 
-    # Plot the best fitting distribution
     x = np.linspace(min(data), max(data), 100)
     pdf = getattr(stats, best_fit).pdf(x, *best_params[:-2], loc=best_params[-2], scale=best_params[-1])
     plt.plot(x, pdf, 'k', linewidth=2, label=f"{best_fit} fit")
