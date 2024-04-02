@@ -189,10 +189,10 @@ true
 true
 "" ""
 PENS
-"sick" 1.0 0 -2674135 true "" "plot count turtles with [ tumor-size > 0 ]"
-"healthy" 1.0 0 -10899396 true "" "plot count turtles with [ tumor-size > 0 ]"
+"sick" 1.0 0 -2674135 true "" "plot count turtles with [ tumor-size > 0.1 ]"
+"healthy" 1.0 0 -10899396 true "" "plot count turtles with [ tumor-size < 0.1 ]"
 "total" 1.0 0 -1184463 true "" "plot count turtles"
-"%on chemo" 1.0 0 -14070903 true "" "plot count turtles with [ chemo? ]"
+"on chemo" 1.0 0 -14070903 true "" "plot count turtles with [ chemo? ]"
 
 MONITOR
 15
@@ -661,7 +661,7 @@ NetLogo 6.4.0
 @#$#@#$#@
 @#$#@#$#@
 <experiments>
-  <experiment name="experiment" repetitions="1000000" sequentialRunOrder="false" runMetricsEveryStep="false">
+  <experiment name="experiment" repetitions="1000" sequentialRunOrder="false" runMetricsEveryStep="false">
     <setup>setup</setup>
     <go>go</go>
     <enumeratedValueSet variable="inital_cancer">
