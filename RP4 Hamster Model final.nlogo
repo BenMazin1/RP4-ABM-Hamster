@@ -661,7 +661,7 @@ NetLogo 6.4.0
 @#$#@#$#@
 @#$#@#$#@
 <experiments>
-  <experiment name="experiment" repetitions="1000" sequentialRunOrder="false" runMetricsEveryStep="false">
+  <experiment name="experiment" repetitions="100000" sequentialRunOrder="false" runMetricsEveryStep="false">
     <setup>setup</setup>
     <go>go</go>
     <enumeratedValueSet variable="inital_cancer">

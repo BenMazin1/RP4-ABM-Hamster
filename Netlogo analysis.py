@@ -13,7 +13,7 @@ import numpy as np
 from scipy.stats import norm
 
 # Set the number of trials and initial hamsters
-number_of_trials = 2000
+number_of_trials = 200000
 initial_hamsters = 100
 
 # save path for the results
