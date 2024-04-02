@@ -9,9 +9,11 @@
 import pandas as pd
 from scipy import stats
 import matplotlib.pyplot as plt
+import numpy as np
+from scipy.stats import norm
 
 # Set the number of trials and initial hamsters
-number_of_trials = 2000000
+number_of_trials = 2000
 initial_hamsters = 100
 
 # save path for the results
@@ -34,6 +36,30 @@ def read_inconsistent_csv(file_path, delimiter=','):
     # Convert the list of lists into a DataFrame
     df = pd.DataFrame(data, columns=range(max_columns))  # Set index to match column numbers
     return df
+
+def plothist(data, title, xlabel, ylabel, save_path):
+    data = data[np.isfinite(data)]
+    bins = np.arange(0.5, 101.5, 1)
+    # Histogram
+    count, bins, ignored = plt.hist(data, bins=bins, density=False, alpha=0.5, color='g', edgecolor='black')
+
+    # Fit a normal distribution and get its parameters
+    mu, std = norm.fit(data)
+
+    # Plot the distribution curve, scaled correctly
+    xmin, xmax = plt.xlim()
+    x = np.linspace(xmin, xmax, 100)
+    bin_width = np.diff(bins)[0]
+    p = norm.pdf(x, mu, std) * len(data) * bin_width   
+    plt.plot(x, p, 'k', linewidth=2)
+
+    plt.title(title) 
+    plt.xlim(0, 101)
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+    plt.savefig(save_path)
+    plt.show()
+    plt.close()
 
 # Run for number_of_trials
 for i in range(1, number_of_trials + 1):
@@ -104,6 +130,12 @@ resultSum = pd.DataFrame({
 # Plot an individual distribution for each category and save to a png in the same directory
 save_path = save_path + 'netlogo results/'
 
+plothist(results['ChemoTotalDead'], 'Chemo Total Dead', 'Total Dead', 'Frequency', save_path + 'ChemoTotalDeadHist.png')
+plothist(results['ChemoPercentInfect'], 'Chemo Percent Infect', 'Percent Infect', 'Frequency', save_path + 'ChemoPercentInfectHist.png')
+plothist(results['NoChemoTotalDead'], 'No Chemo Total Dead', 'Total Dead', 'Frequency', save_path + 'NoChemoTotalDeadHist.png')
+plothist(results['NoChemoPercentInfect'], 'No Chemo Percent Infect', 'Percent Infect', 'Frequency', save_path + 'NoChemoPercentInfectHist.png')
+
+'''
 results['ChemoTotalDead'].plot.kde()
 plt.xlabel('Chemo Total Dead')
 plt.savefig(save_path + 'ChemoTotalDeadDist.png')
@@ -123,7 +155,7 @@ results['NoChemoPercentInfect'].plot.kde()
 plt.xlabel('No Chemo Percent Infect')
 plt.savefig(save_path + 'NoChemoPercentInfectDist.png')
 plt.close()
-
+'''
 
 # save the summary and results to csv
 resultSum.to_csv(save_path + 'summary.csv', index=False)
