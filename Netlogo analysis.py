@@ -38,15 +38,14 @@ def read_inconsistent_csv(file_path, delimiter=','):
     return df
 
 def plothist(data, title, xlabel, ylabel, save_path):
+    
     data = data[np.isfinite(data)]
     bins = np.arange(0.5, 101.5, 1)
-    # Histogram
+
     count, bins, ignored = plt.hist(data, bins=bins, density=False, alpha=0.5, color='g', edgecolor='black')
 
-    # Fit a normal distribution and get its parameters
     mu, std = norm.fit(data)
 
-    # Plot the distribution curve, scaled correctly
     xmin, xmax = plt.xlim()
     x = np.linspace(xmin, xmax, 100)
     bin_width = np.diff(bins)[0]
@@ -58,7 +57,6 @@ def plothist(data, title, xlabel, ylabel, save_path):
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
     plt.savefig(save_path)
-    plt.show()
     plt.close()
 
 # Run for number_of_trials
@@ -123,7 +121,7 @@ percentInfectTtest = stats.ttest_ind(results['ChemoPercentInfect'], results['NoC
 
 # create a new dataframe with the means and t-test results
 resultSum = pd.DataFrame({
-    'Category': ['ChemoTotalDeadMean', 'ChemoPercentInfectMean', 'NoChemoTotalDeadMean', 'NoChemoPercentInfectMean', 'TotalDeadTtest', 'PercentInfectTtest'],
+    'Category': ['ChemoTotalDeadMean', 'ChemoMostInfectMean', 'NoChemoTotalDeadMean', 'NoChemoMostInfectMean', 'TotalDeadTtest', 'MostInfectTtest'],
     'Value': [chemo_total_dead_mean, chemo_percent_infect_mean, no_chemo_total_dead_mean, no_chemo_percent_infect_mean, totalDeadTtest, percentInfectTtest]
 })
 
@@ -131,31 +129,10 @@ resultSum = pd.DataFrame({
 save_path = save_path + 'netlogo results/'
 
 plothist(results['ChemoTotalDead'], 'Chemo Total Dead', 'Total Dead', 'Frequency', save_path + 'ChemoTotalDeadHist.png')
-plothist(results['ChemoPercentInfect'], 'Chemo Percent Infect', 'Percent Infect', 'Frequency', save_path + 'ChemoPercentInfectHist.png')
+plothist(results['ChemoPercentInfect'], 'Chemo most Infect', 'Most Infected at Once', 'Frequency', save_path + 'ChemoPercentInfectHist.png')
 plothist(results['NoChemoTotalDead'], 'No Chemo Total Dead', 'Total Dead', 'Frequency', save_path + 'NoChemoTotalDeadHist.png')
-plothist(results['NoChemoPercentInfect'], 'No Chemo Percent Infect', 'Percent Infect', 'Frequency', save_path + 'NoChemoPercentInfectHist.png')
+plothist(results['NoChemoPercentInfect'], 'No Chemo Most Infect', 'Most Infected at Once', 'Frequency', save_path + 'NoChemoPercentInfectHist.png')
 
-'''
-results['ChemoTotalDead'].plot.kde()
-plt.xlabel('Chemo Total Dead')
-plt.savefig(save_path + 'ChemoTotalDeadDist.png')
-plt.close()
-
-results['ChemoPercentInfect'].plot.kde()
-plt.xlabel('Chemo Percent Infect')
-plt.savefig(save_path + 'ChemoPercentInfectDist.png')
-plt.close()
-
-results['NoChemoTotalDead'].plot.kde()
-plt.xlabel('No Chemo Total Dead')
-plt.savefig(save_path + 'NoChemoTotalDeadDist.png')
-plt.close()
-
-results['NoChemoPercentInfect'].plot.kde()
-plt.xlabel('No Chemo Percent Infect')
-plt.savefig(save_path + 'NoChemoPercentInfectDist.png')
-plt.close()
-'''
 
 # save the summary and results to csv
 resultSum.to_csv(save_path + 'summary.csv', index=False)
