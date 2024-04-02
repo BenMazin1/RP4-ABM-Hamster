@@ -56,7 +56,7 @@ def plothist(data, title, xlabel, ylabel, save_path):
     plt.xlim(0, 101)
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
-    plt.savefig(save_path)
+    plt.savefig(save_path, dpi=300)
     plt.close()
 
 # Run for number_of_trials
