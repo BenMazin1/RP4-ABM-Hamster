@@ -16,7 +16,7 @@ import numpy as np
 # save path for the results
 save_path = '/Users/benmazin/Code Dev/RP 4/netlogo results/'
 
-def plothist(data, figureTitle, xlabel, ylabel, ax, label):
+def plothist(data, figureTitle, xlabel, ylabel, ax, label, color):
 
     # Remove NaN values and create bins
     data = data[np.isfinite(data)]
@@ -24,7 +24,7 @@ def plothist(data, figureTitle, xlabel, ylabel, ax, label):
 
     # Plot the histogram
     hist_data, bin_edges = np.histogram(data, bins=bins, density=True)
-    ax.hist(bin_edges[:-1], bins=bins, weights=hist_data, alpha=0.7, color='skyblue', edgecolor='black', linewidth=1.5)
+    ax.hist(bin_edges[:-1], bins=bins, weights=hist_data, alpha=0.7, color=color, edgecolor='black', linewidth=1.5)
     bin_centers = (bin_edges[:-1] + bin_edges[1:]) / 2
 
     # List of distributions to test
@@ -51,7 +51,7 @@ def plothist(data, figureTitle, xlabel, ylabel, ax, label):
     # Plot the best fit
     x = np.linspace(min(data), max(data), 100)
     pdf = getattr(stats, best_fit).pdf(x, *best_params[:-2], loc=best_params[-2], scale=best_params[-1])
-    ax.plot(x, pdf, 'k', linewidth=3, label=f"{best_fit} fit")
+    ax.plot(x, pdf, 'k', linewidth=4, label=f"{best_fit} fit", color='limegreen')
 
     # Add the title and labels
     ax.set_title(figureTitle, fontsize=20)
@@ -67,10 +67,10 @@ results = pd.read_csv(save_path + 'results.csv')
 
 # Plot an individual distribution for each category and save to a png in the same directory
 fig, axs = plt.subplots(2, 2, figsize=(15, 10))
-plothist(results['ChemoTotalDead'], 'Total Dead with Doxorubicin Treatment', 'Total Dead', 'Frequency', axs[0, 0], 'A')
-plothist(results['NoChemoTotalDead'], 'Total Dead WITHOUT Doxorubicin Treatment', 'Total Dead', 'Frequency', axs[0, 1], 'B')
-plothist(results['ChemoPercentInfect'], 'Infection with Doxorubicin Treatment', 'Most Infected at One Time', 'Frequency', axs[1, 0], 'C')
-plothist(results['NoChemoPercentInfect'], 'Infection WITHOUT Doxorubicin Treatment', 'Most Infected at One Time', 'Frequency', axs[1, 1], 'D')
+plothist(results['ChemoTotalDead'], 'Total Dead with DOX Treatment', 'Total Dead', 'Frequency', axs[0, 0], 'A', 'skyblue')
+plothist(results['NoChemoTotalDead'], 'Total Dead WITHOUT DOX Treatment', 'Total Dead', 'Frequency', axs[0, 1], 'B', 'lightcoral')
+plothist(results['ChemoPercentInfect'], 'Infection with DOX Treatment', 'Most Infected at One Time', 'Frequency', axs[1, 0], 'C', 'midnightblue' )
+plothist(results['NoChemoPercentInfect'], 'Infection WITHOUT DOX Treatment', 'Most Infected at One Time', 'Frequency', axs[1, 1], 'D', 'maroon' )
 
 # Save the figure
 plt.tight_layout(pad=1.0, h_pad=3.0, w_pad=2.0)
