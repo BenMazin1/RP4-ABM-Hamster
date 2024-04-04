@@ -3,12 +3,11 @@
 Welcome to the official repository of the RP4 Hamster Agent Based Model (ABM) Group. Here you will find our interactive model and analysis code used in this iSci Project. Dive into the links below to explore our work.
 
 ## Group Members
-
-- Ben Mazin
+- Jasleen Dhillon
 - Kyla Lewis
+- Ben Mazin
 - Siya Sood
 - Sarah Winter
-- Jasleen Dhillon
 
 ## Project Files
 
