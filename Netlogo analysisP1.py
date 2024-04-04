@@ -6,6 +6,7 @@
 # This script reads in the csv files from the Netlogo model and analyzes the data to determine if the chemo treatment is effective
 # It then saves the results to a csv file
 
+
 import pandas as pd
 from scipy import stats
 

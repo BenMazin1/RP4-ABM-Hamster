@@ -6,6 +6,7 @@
 # This script is used to analyze the results of the NetLogo simulation. It reads the results from the csv file and plots the results as histograms. 
 # It also calculates the standard deviation of the results and saves the results to a csv file.
 
+
 # Import the necessary libraries
 import pandas as pd
 from scipy import stats
