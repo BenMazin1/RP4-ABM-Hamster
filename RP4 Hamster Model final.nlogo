@@ -143,9 +143,9 @@ ticks
 
 SLIDER
 5
-145
-140
-178
+130
+120
+163
 infectiousness
 infectiousness
 0.0
@@ -157,10 +157,10 @@ NIL
 HORIZONTAL
 
 BUTTON
-155
-275
-265
-350
+150
+205
+260
+280
 NIL
 go
 T
@@ -175,9 +175,9 @@ NIL
 
 PLOT
 15
-440
+360
 267
-604
+524
 Populations
 days
 hamsters
@@ -196,9 +196,9 @@ PENS
 
 MONITOR
 15
-395
+315
 80
-440
+360
 NIL
 %infected
 1
@@ -207,9 +207,9 @@ NIL
 
 MONITOR
 155
-395
+315
 205
-440
+360
 days
 ticks
 1
@@ -218,9 +218,9 @@ ticks
 
 SLIDER
 115
-40
+35
 275
-73
+68
 inital_cancer
 inital_cancer
 0
@@ -233,9 +233,9 @@ HORIZONTAL
 
 MONITOR
 90
-395
+315
 145
-440
+360
 %chemo
 %on-chemo
 1
@@ -244,9 +244,9 @@ MONITOR
 
 SLIDER
 115
-75
+70
 275
-108
+103
 MRI-frequency
 MRI-frequency
 1
@@ -258,10 +258,10 @@ days
 HORIZONTAL
 
 SLIDER
-5
-180
-182
-213
+120
+130
+280
+163
 death-threshold
 death-threshold
 0.001
@@ -273,10 +273,10 @@ death-threshold
 HORIZONTAL
 
 BUTTON
-15
-275
-140
-308
+10
+205
+135
+238
 NIL
 setup
 NIL
@@ -291,9 +291,9 @@ NIL
 
 INPUTBOX
 5
-40
+35
 110
-100
+95
 inital-hamsters
 100.0
 1
@@ -312,19 +312,19 @@ Study Setup
 
 TEXTBOX
 90
-120
+110
 240
-138
+128
 Cancer Traits
 15
 0.0
 1
 
 TEXTBOX
-115
-245
-265
-263
+110
+175
+260
+193
 Control
 15
 0.0
@@ -332,9 +332,9 @@ Control
 
 MONITOR
 217
-395
+315
 267
-440
+360
 Dead
 inital-hamsters - count turtles
 0
@@ -342,20 +342,20 @@ inital-hamsters - count turtles
 11
 
 TEXTBOX
-120
-365
-270
-390
+115
+285
+265
+310
 Output
 15
 0.0
 1
 
 SWITCH
-15
-315
-140
-348
+10
+245
+135
+278
 chemo-work
 chemo-work
 0
