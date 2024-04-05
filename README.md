@@ -1,6 +1,6 @@
 # Hamster Agent Based Model (ABM) Project
 
-Welcome to the official repository of the RP4 Hamster Agent Based Model (ABM) Group. Here you will find our interactive model and analysis code used in this iSci Project. Dive into the links below to explore our work.
+Welcome to the official repository of the RP4 Hamster Agent Based Model (ABM) Group. Here you will find our interactive model and analysis code used in this iSci Project.
 
 ## Group Members
 - Jasleen Dhillon
